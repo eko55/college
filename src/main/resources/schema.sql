@@ -1,9 +1,17 @@
+CREATE TABLE college(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) UNIQUE NOT NULL,
+	address VARCHAR(100)
+);
+
 CREATE TABLE faculties (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(100) UNIQUE,
 	address VARCHAR(100),
 	phone VARCHAR(20),
-	email VARCHAR(50)
+	email VARCHAR(50),
+	college_id INT,
+	FOREIGN KEY (college_id) REFERENCES college(id)
 );
 
 CREATE TABLE departments (
@@ -53,4 +61,11 @@ CREATE TABLE head_of_department (
 	department_id INT UNIQUE,
 	FOREIGN KEY (teacher_id) REFERENCES teachers(id),
 	FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(20) UNIQUE NOT NULL,
+	password VARCHAR(30) NOT NULL,
+	role VARCHAR(30)
 );
