@@ -1,7 +1,10 @@
 package com.example.college.controller;
 
 import com.example.college.exception.ResourceAlreadyExistsException;
-import com.example.college.model.Faculty;
+import com.example.college.exception.ResourceNotFoundException;
+import com.example.college.model.dto.FacultyCreationRequest;
+import com.example.college.model.dto.FacultyEditRequest;
+import com.example.college.model.entity.Faculty;
 import com.example.college.service.FacultyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +26,7 @@ public class FacultyController {
     }
 
     @PostMapping()
-    public ResponseEntity<Faculty> createFaculty(@RequestBody Faculty requestBody, UriComponentsBuilder builder) {
+    public ResponseEntity<Faculty> createFaculty(@RequestBody FacultyCreationRequest requestBody, UriComponentsBuilder builder) {
         Faculty faculty;
         try {
             faculty = facultyService.createFaculty(requestBody);
@@ -41,6 +44,40 @@ public class FacultyController {
     @GetMapping()
     public ResponseEntity<List<Faculty>> getFaculties() {
         return ResponseEntity.ok().body(facultyService.getFaculties());
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<Faculty> getFaculty(@PathVariable String name) {
+
+        Faculty faculty;
+        try {
+            faculty = facultyService.getFaculty(name);
+        } catch (ResourceNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
+        return ResponseEntity.ok().body(faculty);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFaculty(@PathVariable Long id) {
+
+        try{
+            facultyService.deleteFaculty(id);
+        } catch (ResourceNotFoundException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Faculty> editFaculty(@PathVariable Long id, @RequestBody FacultyEditRequest requestBody){
+        Faculty faculty;
+        try{
+            faculty= facultyService.editFaculty(id, requestBody);
+        } catch (ResourceNotFoundException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
+        }
+        return ResponseEntity.ok().body(faculty);
     }
 
 }
