@@ -2,10 +2,10 @@ package com.example.college.controller;
 
 import com.example.college.exception.ResourceAlreadyExistsException;
 import com.example.college.exception.ResourceNotFoundException;
-import com.example.college.model.dto.FacultyCreationRequest;
-import com.example.college.model.dto.FacultyEditRequest;
+import com.example.college.model.dto.FacultyDTO;
 import com.example.college.model.entity.Faculty;
 import com.example.college.service.FacultyService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@Tag(name = "Faculties")
 @RestController
 @RequestMapping("/faculties")
 public class FacultyController {
@@ -26,7 +27,7 @@ public class FacultyController {
     }
 
     @PostMapping()
-    public ResponseEntity<Faculty> createFaculty(@RequestBody FacultyCreationRequest requestBody, UriComponentsBuilder builder) {
+    public ResponseEntity<Faculty> createFaculty(@RequestBody FacultyDTO requestBody, UriComponentsBuilder builder) {
         Faculty faculty;
         try {
             faculty = facultyService.createFaculty(requestBody);
@@ -70,10 +71,10 @@ public class FacultyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Faculty> editFaculty(@PathVariable Long id, @RequestBody FacultyEditRequest requestBody){
+    public ResponseEntity<Faculty> editFaculty(@PathVariable Long id, @RequestBody FacultyDTO facultyDTO){
         Faculty faculty;
         try{
-            faculty= facultyService.editFaculty(id, requestBody);
+            faculty= facultyService.editFaculty(id, facultyDTO);
         } catch (ResourceNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
         }

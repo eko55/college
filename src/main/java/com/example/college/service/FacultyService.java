@@ -2,8 +2,7 @@ package com.example.college.service;
 
 import com.example.college.exception.ResourceAlreadyExistsException;
 import com.example.college.exception.ResourceNotFoundException;
-import com.example.college.model.dto.FacultyCreationRequest;
-import com.example.college.model.dto.FacultyEditRequest;
+import com.example.college.model.dto.FacultyDTO;
 import com.example.college.model.entity.Faculty;
 import com.example.college.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
@@ -19,11 +18,11 @@ public class FacultyService {
         this.facultyRepository = facultyRepository;
     }
 
-    public Faculty createFaculty(FacultyCreationRequest facultyCreationRequest) {
-        if (facultyRepository.existsByName(facultyCreationRequest.name())) {
-            throw new ResourceAlreadyExistsException(String.format("Faculty with name %s already exists!",facultyCreationRequest.name()));
+    public Faculty createFaculty(FacultyDTO facultyDTO) {
+        if (facultyRepository.existsByName(facultyDTO.name())) {
+            throw new ResourceAlreadyExistsException(String.format("Faculty with name %s already exists!", facultyDTO.name()));
         }
-        Faculty faculty = new Faculty(facultyCreationRequest);
+        Faculty faculty = new Faculty(facultyDTO);
         return facultyRepository.save(faculty);
     }
 
@@ -47,9 +46,10 @@ public class FacultyService {
         }
     }
 
-    public Faculty editFaculty(Long id, FacultyEditRequest facultyEditRequest){
+    public Faculty editFaculty(Long id, FacultyDTO facultyDTO){
         if(facultyRepository.existsById(id)){
-            Faculty faculty= new Faculty(id, facultyEditRequest);
+            Faculty faculty= new Faculty(facultyDTO);
+            faculty.setId(id);
             return facultyRepository.save(faculty);
         } else{
             throw new ResourceNotFoundException(String.format("Faculty with id %s does not exist!",id));

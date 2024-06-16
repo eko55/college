@@ -1,7 +1,6 @@
 package com.example.college.model.entity;
 
-import com.example.college.model.dto.FacultyCreationRequest;
-import com.example.college.model.dto.FacultyEditRequest;
+import com.example.college.model.dto.FacultyDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,19 +23,11 @@ public class Faculty {
     public Faculty() {
     }
 
-    public Faculty(FacultyCreationRequest facultyCreationRequest){
-        this.name = facultyCreationRequest.name();
-        this.address = facultyCreationRequest.address();
-        this.phone = facultyCreationRequest.phone();
-        this.email = facultyCreationRequest.email();
-    }
-
-    public Faculty(Long id,FacultyEditRequest facultyEditRequest){
-        this.id = id;
-        this.name = facultyEditRequest.name();
-        this.address = facultyEditRequest.address();
-        this.phone = facultyEditRequest.phone();
-        this.email = facultyEditRequest.email();
+    public Faculty(FacultyDTO facultyDTO){
+        this.name = facultyDTO.name();
+        this.address = facultyDTO.address();
+        this.phone = facultyDTO.phone();
+        this.email = facultyDTO.email();
     }
 
     public Long getId() {
