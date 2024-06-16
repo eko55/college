@@ -43,7 +43,7 @@ public class CoursesService {
     public Course getCourse(String name){
         Course course = courseRepository.findByName(name);
         if(course == null){
-            throw new ResourceNotFoundException(String.format("Course with name %s does not exist!",name));
+            throw new ResourceNotFoundException(String.format("Course with name %s does not exists!",name));
         }
         return courseRepository.findByName(name);}
 
