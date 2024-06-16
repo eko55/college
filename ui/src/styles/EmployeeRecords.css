@@ -1,0 +1,26 @@
+  .centerTable {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .tableHeader {
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #2e580c;
+    background-color: #2023c9;
+  }
+  
+  .tableCell {
+    padding: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #2e580c;
+  }
+  
+  .tableRow {
+    background-color: #4298ca;
+  }
+   
