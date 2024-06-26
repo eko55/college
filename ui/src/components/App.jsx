@@ -1,6 +1,6 @@
 import reactLogo from '../assets/react.svg';
 import '../styles/App.css';
-import EmployeeRecords from './EmployeeRecords';
+import College from './College';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <div>
         <img src={reactLogo} className='logo react' alt='React logo' />
       </div>
-      <EmployeeRecords />
+      <College />
     </>
   );
 }
