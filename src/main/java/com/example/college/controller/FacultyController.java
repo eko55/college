@@ -59,11 +59,34 @@ public class FacultyController {
         return ResponseEntity.ok().body(faculty);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteFaculty(@PathVariable Long id) {
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Faculty> getFacultyById(@PathVariable Long id) {
+
+        Faculty faculty;
+        try {
+            faculty = facultyService.getFaculty(id);
+        } catch (ResourceNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
+        return ResponseEntity.ok().body(faculty);
+    }
+
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteFaculty(@PathVariable Long id) {
+//
+//        try{
+//            facultyService.deleteFaculty(id);
+//        } catch (ResourceNotFoundException e){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
+//        }
+//        return ResponseEntity.noContent().build();
+//    }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> deleteFaculty(@PathVariable String name) {
 
         try{
-            facultyService.deleteFaculty(id);
+            facultyService.deleteFaculty(name);
         } catch (ResourceNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
         }

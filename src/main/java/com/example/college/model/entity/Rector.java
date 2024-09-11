@@ -1,20 +1,19 @@
 package com.example.college.model.entity;
 
-import com.example.college.model.dto.TeacherDTO;
+import com.example.college.model.dto.RectorDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "rector")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Teacher {
+public class Rector {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +32,9 @@ public class Teacher {
     @NotBlank(message = "lastName should not be blank")
     private String lastName;
 
-    @Column(name = "department_id")
-    @NotNull(message = "departmentId should not be null")
-    private Long departmentId;
-
-    public Teacher(TeacherDTO teacherDTO) {
-        this.personalNumber = teacherDTO.personalNumber();
-        this.firstName = teacherDTO.firstName();
-        this.lastName = teacherDTO.lastName();
-        this.departmentId = teacherDTO.departmentId();
+    public Rector(RectorDTO rectorDTO) {
+        this.personalNumber = rectorDTO.personalNumber();
+        this.firstName = rectorDTO.firstName();
+        this.lastName = rectorDTO.lastName();
     }
 }

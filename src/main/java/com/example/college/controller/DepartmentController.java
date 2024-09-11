@@ -59,11 +59,11 @@ public class DepartmentController {
         return ResponseEntity.ok().body(department);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDepartment(@PathVariable Long id) {
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> deleteDepartment(@PathVariable String name) {
 
         try{
-            departmentService.deleteDepartment(id);
+            departmentService.deleteDepartment(name);
         } catch (ResourceNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
         }

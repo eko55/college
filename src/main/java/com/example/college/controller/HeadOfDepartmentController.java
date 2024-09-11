@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@Tag(name = "Head Of Department")
+//@Tag(name = "Head Of Department")
 @RestController
 @RequestMapping("/headOfDepartment")
 public class HeadOfDepartmentController {
