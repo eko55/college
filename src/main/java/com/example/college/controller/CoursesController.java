@@ -6,6 +6,7 @@ import com.example.college.model.dto.CourseDTO;
 import com.example.college.model.entity.Course;
 import com.example.college.service.CoursesService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,10 @@ public class CoursesController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Course>> getCourses() {
+    public ResponseEntity<List<Course>> getCourses(@RequestParam(required = false) Long teacherId) {
+        if (teacherId != null){
+            return ResponseEntity.ok().body(coursesService.getCourses(teacherId));
+        }
         return ResponseEntity.ok().body(coursesService.getCourses());
     }
 

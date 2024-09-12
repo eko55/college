@@ -44,34 +44,34 @@ public class CollegeController {
         return ResponseEntity.created(newCollegeResourceLocation).body(college);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<College> getCollege(@PathVariable String name) {
+    @GetMapping()
+    public ResponseEntity<College> getCollege() {
 
         College college;
         try {
-            college = collegeService.getCollege(name);
+            college = collegeService.getCollege();
         } catch (ResourceNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
         return ResponseEntity.ok().body(college);
     }
 
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Void> deleteCollege(@PathVariable String name) {
+    @DeleteMapping()
+    public ResponseEntity<Void> deleteCollege() {
 
         try{
-            collegeService.deleteCollege(name);
+            collegeService.deleteCollege();
         } catch (ResourceNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
         }
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{name}")
-    public ResponseEntity<College> editCollege(@PathVariable String name, @RequestBody CollegeDTO collegeDTO){
+    @PutMapping()
+    public ResponseEntity<College> editCollege(@RequestBody CollegeDTO collegeDTO){
         College college;
         try{
-            college = collegeService.editCollege(name, collegeDTO);
+            college = collegeService.editCollege(collegeDTO);
         } catch (ResourceNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(),e);
         }

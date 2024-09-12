@@ -17,32 +17,43 @@ public class CollegeService {
     }
 
 
-    public College getCollege(String name) {
-        return collegeRepository.findByName(name);
+    public College getCollege() {
+        if (!collegeExists()) {
+            throw new ResourceNotFoundException("College is not created yet!");
+        }
+        return collegeRepository.findAll().get(0);
     }
 
-    public void deleteCollege(String name) {
-        collegeRepository.deleteByName(name);
+    public void deleteCollege() {
+        if (collegeExists()) {
+            collegeRepository.deleteAll();
+        } else {
+            throw new ResourceNotFoundException("College is not created yet!");
+        }
     }
 
-    public College editCollege(String name, CollegeDTO collegeDTO) {
-        if (collegeRepository.existsByName(name)) {
-            College ogCollege = getCollege(name);
+    public College editCollege(CollegeDTO collegeDTO) {
+        if (collegeExists()) {
+            College ogCollege = getCollege();
             College college = new College(collegeDTO);
             college.setId(ogCollege.getId());
             return collegeRepository.save(college);
         } else {
-            throw new ResourceNotFoundException(String.format("College with name %s does not exist!", name));
+            throw new ResourceNotFoundException("College is not created yet!");
         }
     }
 
     public College createCollege(CollegeDTO requestBody) {
 
-        if (collegeRepository.existsByName(requestBody.name())) {
-            throw new ResourceAlreadyExistsException(String.format("College with name %s already exists!",requestBody.name()));
+        if (collegeExists()) {
+            throw new ResourceAlreadyExistsException("Only one college is allowed!");
         }
 
         College college = new College(requestBody);
         return collegeRepository.save(college);
+    }
+
+    private boolean collegeExists() {
+        return !collegeRepository.findAll().isEmpty();
     }
 }

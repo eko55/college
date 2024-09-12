@@ -26,43 +26,47 @@ public class CoursesService {
 
     public Course createCourse(CourseDTO courseDTO) {
         if (courseRepository.existsByName(courseDTO.name())) {
-            throw new ResourceAlreadyExistsException(String.format("Course with name %s already exists!",courseDTO.name()));
+            throw new ResourceAlreadyExistsException(String.format("Course with name %s already exists!", courseDTO.name()));
         }
         if (teacherRepository.existsById(courseDTO.teacherId())) {
-            throw new ResourceNotFoundException(String.format("Teacher with id %s does not exists!",courseDTO.teacherId()));
+            throw new ResourceNotFoundException(String.format("Teacher with id %s does not exists!", courseDTO.teacherId()));
         }
 
         Course course = new Course(courseDTO);
         return courseRepository.save(course);
     }
 
-    public List<Course> getCourses(){
+    public List<Course> getCourses() {
         return courseRepository.findAll();
     }
 
-    public Course getCourse(String name){
-        Course course = courseRepository.findByName(name);
-        if(course == null){
-            throw new ResourceNotFoundException(String.format("Course with name %s does not exists!",name));
-        }
-        return courseRepository.findByName(name);}
+    public List<Course> getCourses(Long teacherId) {
+        return courseRepository.findAllByTeacherId(teacherId);
+    }
 
-    public void deleteCourse(Long id){
-        if(courseRepository.existsById((id))){
-            courseRepository.deleteById(id);
+    public Course getCourse(String name) {
+        Course course = courseRepository.findByName(name);
+        if (course == null) {
+            throw new ResourceNotFoundException(String.format("Course with name %s does not exists!", name));
         }
-        else{
-            throw new ResourceNotFoundException(String.format(COURSE_NOT_FOUND,id));
+        return courseRepository.findByName(name);
+    }
+
+    public void deleteCourse(Long id) {
+        if (courseRepository.existsById((id))) {
+            courseRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException(String.format(COURSE_NOT_FOUND, id));
         }
     }
 
-    public Course editCourse(Long id, CourseDTO courseDTO){
-        if(courseRepository.existsById(id)){
-            Course course= new Course(courseDTO);
+    public Course editCourse(Long id, CourseDTO courseDTO) {
+        if (courseRepository.existsById(id)) {
+            Course course = new Course(courseDTO);
             course.setId(id);
             return courseRepository.save(course);
-        } else{
-            throw new ResourceNotFoundException(String.format(COURSE_NOT_FOUND,id));
+        } else {
+            throw new ResourceNotFoundException(String.format(COURSE_NOT_FOUND, id));
         }
     }
 }

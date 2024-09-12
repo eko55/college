@@ -26,9 +26,13 @@ public class Student {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "programme_id")
+    private Long programmeId;
+
     public Student(StudentDTO studentDTO) {
         this.facultyNumber = studentDTO.facultyNumber();
         this.firstName = studentDTO.firstName();
         this.lastName = studentDTO.lastName();
+        this.programmeId = studentDTO.programmeId();
     }
 }
