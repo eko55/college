@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculties</title>
+    <script src="/src/scripts/faculties.js"></script>
+    <script src="/src/scripts/addFaculty.js"></script>
+    <link rel="stylesheet" href="/src/styles/faculties.css" />
+    <link rel="stylesheet" href="/src/styles/nav.css" />
+    <!-- link тага дефинира връзки на документа с други ресурси-->
+  </head>
+  <body>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/src/pages/faculties.html">Факултети</a>
+      <a href="/src/pages/departments.html">Департаменти</a>
+      <a href="/src/pages/courses.html">Курсове</a>
+      <a href="/src/pages/teachers.html">Преподаватели</a>
+      <a href="/src/pages/students.html">Студенти</a>
+    </nav>
+    <div>
+      <h1>Факултети</h1>
+      <div>
+        <button id="addFacultyBtn" onclick="showAddFacultyForm()">
+          + Добави факултет
+        </button>
+      </div>
+      <!-- <div id="addFacultyContainer"> -->
+        <!-- html forms are used to collect input from users and send it to server for processing
+         clicking the submit button sends the data to a form handler-->
+        <form id="addFacultyForm">
+          <div class="form-element">
+            <label for="facultyInputField">Факултет: </label>
+            <input
+              id="facultyInputField"
+              name="faculty"
+              type="text"
+              placeholder="Факултет"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyAddress">Адрес: </label>
+            <input
+              id="facultyAddress"
+              type="text"
+              name="address"
+              placeholder="Адрес"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyId">Телефон: </label>
+            <input
+              id="facultyPhone"
+              type="text"
+              name="phone"
+              placeholder="Телефон"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyId">Email: </label>
+            <input
+              id="facultyEmail"
+              type="text"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <!-- <input type="submit" value="Log In" /> -->
+          <div class="form-element">
+            <button
+              id="hideAddFacultyFormBtn"
+              type="button"
+              onclick="hideAddFacultyForm()"
+            >
+              Discard
+            </button>
+            <button id="editFacultyPopupSubmitBtn" type="submit">Submit</button>
+          </div>
+
+          <!-- <button id="addFacultyPopupSubmitBtn" type="submit">Submit</button> -->
+        </form>
+      <!-- </div> -->
+      <!-- <div id="editFacultyContainer"> -->
+        <!-- html forms are used to collect input from users and send it to server for processing
+         clicking the submit button sends the data to a form handler-->
+        <form id="editFacultyForm">
+          <div class="form-element">
+            <label for="facultyId">ID: </label>
+            <input
+              id="facultyId"
+              name="id"
+              type="text"
+              placeholder="ID"
+              hidden
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyInputField">Факултет: </label>
+            <input
+              id="facultyInputField"
+              name="faculty"
+              type="text"
+              placeholder="Факултет"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyAddress">Адрес: </label>
+            <input
+              id="facultyAddress"
+              type="text"
+              name="address"
+              placeholder="Адрес"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyId">Телефон: </label>
+            <input
+              id="facultyPhone"
+              type="text"
+              name="phone"
+              placeholder="Телефон"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="facultyId">Email: </label>
+            <input
+              id="facultyEmail"
+              type="text"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <!-- <input type="submit" value="Log In" /> -->
+          <div class="form-element">
+            <button
+              id="hideEditFacultyFormBtn"
+              type="button"
+              onclick="hideEditFacultyForm()"
+            >
+              Discard
+            </button>
+            <button id="editFacultyPopupSubmitBtn" type="submit">Submit</button>
+          </div>
+        </form>
+      <!-- </div> -->
+      <table id="facultiesTable" className="centerTable">
+        <thead>
+          <tr>
+            <th className="tableHeader">ID</th>
+            <th className="tableHeader">Факултет</th>
+            <th className="tableHeader">Адрес</th>
+            <th className="tableHeader">Телефон</th>
+            <th className="tableHeader">Email</th>
+            <th className="tableHeader"></th>
+            <th className="tableHeader"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

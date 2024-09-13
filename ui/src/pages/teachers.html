@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers</title>
+    <script src="/src/scripts/teachers.js"></script>
+    <link rel="stylesheet" href="/src/styles/teachers.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/src/pages/faculties.html">Факултети</a>
+      <a href="/src/pages/departments.html">Департаменти</a>
+      <a href="/src/pages/courses.html">Курсове</a>
+      <a href="/src/pages/teachers.html">Преподаватели</a>
+      <a href="/src/pages/students.html">Студенти</a>
+    </nav>
+    <div>
+      <h1>Преподаватели</h1>
+      <div>
+        <button id="addTeacherBtn" onclick="showAddTeacherForm()">
+          + Добави преподавател
+        </button>
+      </div>
+      <form id="addTeacherForm">
+        <div class="form-element">
+          <label for="personalNumberInputField">ЕГН: </label>
+          <input
+            id="personalNumberInputField"
+            name="personalNumber"
+            type="text"
+            placeholder="ЕГН"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="name">Име: </label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Име"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="lastName">Фамилия: </label>
+          <input
+            id="lastName"
+            type="text"
+            name="lastName"
+            placeholder="Фамилия"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="department">Департамент: </label>
+          <input
+            id="department"
+            type="text"
+            name="department"
+            placeholder="Департамент"
+          />
+        </div>
+        <!-- <input type="submit" value="Log In" /> -->
+        <div class="form-element">
+          <button
+            id="hideAddTeacherFormBtn"
+            type="button"
+            onclick="hideAddTeacherForm()"
+          >
+            Discard
+          </button>
+          <button id="editTeacherPopupSubmitBtn" type="submit">Submit</button>
+        </div>
+
+        <!-- <button id="addTeacherPopupSubmitBtn" type="submit">Submit</button> -->
+      </form>
+      <form id="editTeacherForm">
+
+        <div class="form-element">
+          <label for="teacherId">ID: </label>
+          <input id="teacherId" name="id" type="text" placeholder="ID" hidden />
+        </div>
+
+        <div class="form-element">
+          <label for="teacherInputField">ЕГН: </label>
+          <input
+            id="personalNumber"
+            name="personalNumber"
+            type="text"
+            placeholder="ЕГН"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="teacherAddress">Име: </label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Име"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="teacherId">Фамилия: </label>
+          <input
+            id="lastName"
+            type="text"
+            name="lastName"
+            placeholder="Фамилия"
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="teacherId">Департамент: </label>
+          <input
+            id="department"
+            type="text"
+            name="department"
+            placeholder="Департамент"
+          />
+        </div>
+        <!-- <input type="submit" value="Log In" /> -->
+        <div class="form-element">
+          <button
+            id="hideEditTeacherFormBtn"
+            type="button"
+            onclick="hideEditTeacherForm()"
+          >
+            Discard
+          </button>
+          <button id="editTeacherPopupSubmitBtn" type="submit">Submit</button>
+        </div>
+      </form>
+      <table id="teachersTable" className="centerTable">
+        <thead>
+          <tr>
+            <th className="tableHeader">ЕГН</th>
+            <th className="tableHeader">Име</th>
+            <th className="tableHeader">Фамилия</th>
+            <th className="tableHeader">Департамент</th>
+            <th className="tableHeader"></th>
+            <th className="tableHeader"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculties</title>
+    <script src="/src/scripts/departments.js"></script>
+    <!-- <script type="module" src="/src/scripts/faculties.js"></script> -->
+    <link rel="stylesheet" href="/src/styles/departments.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/src/pages/faculties.html">Факултети</a>
+      <a href="/src/pages/departments.html">Департаменти</a>
+      <a href="/src/pages/courses.html">Курсове</a>
+      <a href="/src/pages/teachers.html">Преподаватели</a>
+      <a href="/src/pages/students.html">Студенти</a>
+    </nav>
+    <div>
+      <h1>Департаменти</h1>
+      <div>
+        <button id="addDepartmentBtn" onclick="showAddDepartmentForm()">
+          + Добави департамент
+        </button>
+      </div>
+        <form id="addDepartmentForm">
+          <div class="form-element">
+            <label for="departmentInputField">Департамент: </label>
+            <input
+              id="departmentInputField"
+              name="department"
+              type="text"
+              placeholder="Департамент"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentAddress">Факултет: </label>
+            <input
+              id="departmentFaculty"
+              type="text"
+              name="address"
+              placeholder="Адрес"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentId">Телефон: </label>
+            <input
+              id="departmentPhone"
+              type="text"
+              name="phone"
+              placeholder="Телефон"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentId">Email: </label>
+            <input
+              id="departmentEmail"
+              type="text"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <!-- <input type="submit" value="Log In" /> -->
+          <div class="form-element">
+            <button
+              id="hideAddDepartmentFormBtn"
+              type="button"
+              onclick="hideAddDepartmentForm()"
+            >
+              Discard
+            </button>
+            <button id="editDepartmentPopupSubmitBtn" type="submit">Submit</button>
+          </div>
+
+          <!-- <button id="addDepartmentPopupSubmitBtn" type="submit">Submit</button> -->
+        </form>
+      <!-- </div> -->
+      <!-- <div id="editDepartmentContainer"> -->
+        <!-- html forms are used to collect input from users and send it to server for processing
+         clicking the submit button sends the data to a form handler-->
+        <form id="editDepartmentForm">
+          <div class="form-element">
+            <label for="departmentId">ID: </label>
+            <input
+              id="departmentId"
+              name="id"
+              type="text"
+              placeholder="ID"
+              hidden
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentInputField">Департамент: </label>
+            <input
+              id="departmentInputField"
+              name="department"
+              type="text"
+              placeholder="Департамент"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentAddress">Факултет: </label>
+            <input
+              id="faculty"
+              type="text"
+              name="faculty"
+              placeholder="Факултет"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentId">Телефон: </label>
+            <input
+              id="departmentPhone"
+              type="text"
+              name="phone"
+              placeholder="Телефон"
+            />
+          </div>
+
+          <div class="form-element">
+            <label for="departmentId">Email: </label>
+            <input
+              id="departmentEmail"
+              type="text"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <!-- <input type="submit" value="Log In" /> -->
+          <div class="form-element">
+            <button
+              id="hideEditDepartmentFormBtn"
+              type="button"
+              onclick="hideEditDepartmentForm()"
+            >
+              Discard
+            </button>
+            <button id="editFacultyPopupSubmitBtn" type="submit">Submit</button>
+          </div>
+        </form>
+      <!-- </div> -->
+      <table id="departmentsTable" className="centerTable">
+        <thead>
+          <tr>
+            <th className="tableHeader">ID</th>
+            <th className="tableHeader">Департамент</th>
+            <th className="tableHeader">Факултет</th>
+            <th className="tableHeader">Телефон</th>
+            <th className="tableHeader">Email</th>
+            <th className="tableHeader"></th>
+            <th className="tableHeader"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

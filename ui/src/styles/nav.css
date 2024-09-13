@@ -1,0 +1,54 @@
+body {
+  background-color: lightblue;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid white;
+  background-color: white;
+}
+nav a {
+  flex: 1;
+  border: 2px solid lightblue;
+  font-size: 3vh;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#addFacultyBtn {
+  float: right;
+}
+
+#editFacultyPopup {
+  display: none;
+}
+
+table {
+  width: 70vw;
+  border: 3px solid white;
+  margin: 5vh auto;
+  border-collapse: collapse; /*allows rows to have borders as well*/
+}
+
+th {
+  border: 3px solid white;
+  font-size: 2.5vh;
+}
+
+tr {
+  border: 2px solid white;
+}
+
+td {
+  border: 2px solid white;
+  font-size: 2.5vh;
+}
+
+tr button {
+  margin: auto;
+  display: block;
+}
