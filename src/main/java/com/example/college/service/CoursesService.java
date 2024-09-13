@@ -9,6 +9,7 @@ import com.example.college.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoursesService {
@@ -50,6 +51,14 @@ public class CoursesService {
             throw new ResourceNotFoundException(String.format("Course with name %s does not exists!", name));
         }
         return courseRepository.findByName(name);
+    }
+
+    public Course getCourse(Long id) {
+        Optional<Course> course = courseRepository.findById(id);
+        if (course.isEmpty()) {
+            throw new ResourceNotFoundException(String.format("Course with id %s does not exists!", id));
+        }
+        return course.get();
     }
 
     public void deleteCourse(Long id) {

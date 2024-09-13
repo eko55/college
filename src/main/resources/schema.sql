@@ -83,13 +83,14 @@ CREATE TABLE IF NOT EXISTS students(
 	programme_id INT,
 	FOREIGN KEY (programme_id) REFERENCES programmes(id)
 );
---CREATE TABLE courses_registrations (
---	id SERIAL PRIMARY KEY,
---	course_id INT,
---	student_id INT,
---	FOREIGN KEY (course_id) REFERENCES courses(id),
---	FOREIGN KEY (student_id) REFERENCES students(id)
---);
+
+CREATE TABLE IF NOT EXISTS courses_accreditations (
+	id SERIAL PRIMARY KEY,
+	course_id INT,
+	teacher_id INT,
+	FOREIGN KEY (course_id) REFERENCES courses(id),
+	FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
 
 --CREATE TABLE head_of_department (
 --	id SERIAL PRIMARY KEY,

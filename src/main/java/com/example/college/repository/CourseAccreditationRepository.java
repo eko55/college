@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CourseAccreditationRepository extends JpaRepository<CourseAccreditation, Long> {
 
-    List<CourseAccreditation> findAllByCourseName(String courseName);
+    boolean existsByCourseIdAndTeacherId(Long courseId, Long teacherId);
 
-    List<CourseAccreditation> findAllByTeacherPersonalNumber(String teacherPersonalNumber);
+    List<CourseAccreditation> findAllByTeacherId(Long teacherId);
 }

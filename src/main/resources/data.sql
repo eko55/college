@@ -91,3 +91,19 @@ VALUES('22345678', 'Bogdan', 'Ivanov');
 
 INSERT INTO students (faculty_number, first_name, last_name)
 VALUES('32345678', 'Elon', 'Musk');
+
+-- Courses Accreditations
+INSERT INTO courses_accreditations (course_id, teacher_id)
+VALUES(1, 1);
+
+INSERT INTO courses_accreditations (course_id, teacher_id)
+VALUES(2, 1);
+
+INSERT INTO courses_accreditations (course_id, teacher_id)
+VALUES(3, 1);
+
+INSERT INTO courses_accreditations (course_id, teacher_id)
+VALUES(1, 2);
+
+INSERT INTO courses_accreditations (course_id, teacher_id)
+VALUES(2, 2);

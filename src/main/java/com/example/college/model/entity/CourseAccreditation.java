@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "courses_accreditation")
+@Table(name = "courses_accreditations")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,14 +18,14 @@ public class CourseAccreditation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "course_name")
-    private String courseName;
+    @Column(name = "course_id")
+    private Long courseId;
 
-    @Column(name = "teacher_personal_number")
-    private String teacherPersonalNumber;
+    @Column(name = "teacher_id")
+    private Long teacherId;
 
     public CourseAccreditation(CourseAccreditationDTO courseAccreditationDTO) {
-        this.courseName = courseAccreditationDTO.courseName();
-        this.teacherPersonalNumber = courseAccreditationDTO.teacherPersonalNumber();
+        this.courseId = courseAccreditationDTO.courseId();
+        this.teacherId = courseAccreditationDTO.teacherId();
     }
 }
