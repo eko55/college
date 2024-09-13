@@ -17,7 +17,6 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String name;
 
     private String description;
@@ -25,16 +24,13 @@ public class Course {
     @Column(name = "teacher_id")
     private Long teacherId;
 
-    private Integer semester;
-
-    @Column(name = "programme_id")
-    private Long programmeId;
+    @Column(name = "semester_id")
+    private Long semesterId;
 
     public Course(CourseDTO courseDTO) {
         this.name = courseDTO.name();
         this.description = courseDTO.description();
         this.teacherId = courseDTO.teacherId();
-        this.semester = courseDTO.semester();
-        this.programmeId = courseDTO.programmeId();
+        this.semesterId = courseDTO.semesterId();
     }
 }

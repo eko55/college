@@ -33,6 +33,8 @@ public class DepartmentController {
             department = departmentService.createDepartment(requestBody);
         } catch (ResourceAlreadyExistsException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
+        } catch (ResourceNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
 
         URI newDepartmentLocation = builder
