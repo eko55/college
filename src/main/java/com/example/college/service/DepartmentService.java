@@ -7,6 +7,7 @@ import com.example.college.model.entity.Department;
 import com.example.college.repository.DepartmentRepository;
 import com.example.college.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -53,6 +54,7 @@ public class DepartmentService {
         }
     }
 
+    @Transactional
     public void deleteDepartment(String name) {
         if (departmentRepository.existsByName(name)) {
             departmentRepository.deleteByName(name);

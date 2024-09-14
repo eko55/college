@@ -52,3 +52,33 @@ tr button {
   margin: auto;
   display: block;
 }
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+}
+
+#container {
+  font-family: Arial, sans-serif;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#loginForm {
+  display: none;
+}
+
+#editCollegeBtn {
+  float: right;
+}
+

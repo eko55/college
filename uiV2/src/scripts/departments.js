@@ -7,7 +7,13 @@ function showAddDepartmentForm() {
   }
   
   function getDepartments() {
-    fetch('http://localhost:8080/departments')
+    fetch('http://localhost:8080/departments', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : 'Basic ' + btoa('admin:admin'),
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok ' + response.statusText);
@@ -25,7 +31,15 @@ function showAddDepartmentForm() {
   
   async function getDepartment(name) {
     try {
-      const response = await fetch(`http://localhost:8080/departments/${name}`);
+      
+      const response = await fetch(`http://localhost:8080/departments/${name}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json', // Include headers if needed
+          'Authorization' : 'Basic ' + btoa('admin:admin'), // Include authorization token if needed
+        },
+      })
+      //fetch(`http://localhost:8080/departments/${name}`);
   
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -90,7 +104,7 @@ function showAddDepartmentForm() {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json', // Include headers if needed
-        //   Authorization: 'Bearer your-token', // Include authorization token if needed
+        'Authorization' : 'Basic ' + btoa('admin:admin'), // Include authorization token if needed
       },
     })
       .then((response) => {
@@ -130,10 +144,10 @@ function showAddDepartmentForm() {
     //   const departmentFaculty = editDepartmentForm.querySelector('[name="faculty"]');
     //   departmentFaculty.value = faculty.name;
 
-      const address = document.createElement('td');
-      address.setAttribute('class', 'addressCell');
-      address.textContent = item.facultyId;
-      row.appendChild(address);
+      const facultyId = document.createElement('td');
+      facultyId.setAttribute('class', 'addressCell');
+      facultyId.textContent = item.facultyId;
+      row.appendChild(facultyId);
   
       const phone = document.createElement('td');
       phone.setAttribute('class', 'phoneCell');
@@ -207,7 +221,7 @@ function showAddDepartmentForm() {
       // Convert form data to a JSON object (optional but commonly used for APIs)
       const data = {
         name: formData.get('department'),
-        address: formData.get('address'),
+        facultyId: formData.get('facultyId'),
         phone: formData.get('phone'),
         email: formData.get('email'),
       };
@@ -219,8 +233,8 @@ function showAddDepartmentForm() {
         // Replace with your actual API endpoint
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Send JSON data
-          // 'Authorization': 'Bearer your-token', // Add if authentication is required
+          'Content-Type': 'application/json', // Include headers if needed
+          'Authorization' : 'Basic ' + btoa('admin:admin'), // Include authorization token if needed
         },
         body: JSON.stringify(data), // Convert the data object to JSON string
       })
@@ -268,8 +282,8 @@ function showAddDepartmentForm() {
         // Replace with your actual API endpoint
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json', // Send JSON data
-          // 'Authorization': 'Bearer your-token', // Add if authentication is required
+          'Content-Type': 'application/json', // Include headers if needed
+          'Authorization' : 'Basic ' + btoa('admin:admin'), // Include authorization token if needed
         },
         body: JSON.stringify(data), // Convert the data object to JSON string
       })

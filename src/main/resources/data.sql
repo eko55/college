@@ -1,7 +1,7 @@
-INSERT INTO users (username,password) VALUES('alice','$2a$12$S42Fpdtui6Z418lBT2.nmOApca9tOl4ZtTl8gw1dTtLz0tAcRSVuO');
-INSERT INTO users (username,password) VALUES('bob','$2a$12$/eKYJy1EH8tteEyRv0ZX.O0YW0HAAcSG5uzO.yRlqFgxTnBGXZLyS');
-INSERT INTO users (username,password) VALUES('carol','$2a$12$GmCoLXQTzQM.cIHYsunZkuiaiLveL/lh6.UAXCl3aIQKLzbrWJD3a');
-INSERT INTO users (username,password) VALUES('dave','$2a$12$MxmU4VYzO.uypEl1MsFG4.CVg7z/jak7xgLMfLyF0XEJxBUCd2Z4W');
+--INSERT INTO users (username,password) VALUES('alice','$2a$12$S42Fpdtui6Z418lBT2.nmOApca9tOl4ZtTl8gw1dTtLz0tAcRSVuO');
+--INSERT INTO users (username,password) VALUES('bob','$2a$12$/eKYJy1EH8tteEyRv0ZX.O0YW0HAAcSG5uzO.yRlqFgxTnBGXZLyS');
+--INSERT INTO users (username,password) VALUES('carol','$2a$12$GmCoLXQTzQM.cIHYsunZkuiaiLveL/lh6.UAXCl3aIQKLzbrWJD3a');
+--INSERT INTO users (username,password) VALUES('dave','$2a$12$MxmU4VYzO.uypEl1MsFG4.CVg7z/jak7xgLMfLyF0XEJxBUCd2Z4W');
 
 INSERT INTO college (name, address) VALUES('Default College', 'Default Address');
 

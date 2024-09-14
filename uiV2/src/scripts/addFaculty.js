@@ -1,8 +1,8 @@
-function showEditFacultyForm() {
-  const editFacultyForm = document.getElementById('editFacultyForm');
-  hideAddFacultyForm();
-  editFacultyForm.style.display = 'block';
-}
+// function showEditFacultyForm() {
+//   const editFacultyForm = document.getElementById('editFacultyForm');
+//   hideAddFacultyForm();
+//   editFacultyForm.style.display = 'block';
+// }
 
 function hideEditFacultyForm() {
   const editFacultyForm = document.getElementById('editFacultyForm');

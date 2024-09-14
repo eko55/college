@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Faculties</title>
     <script src="/src/scripts/departments.js"></script>
-    <!-- <script type="module" src="/src/scripts/faculties.js"></script> -->
     <link rel="stylesheet" href="/src/styles/departments.css" />
   </head>
   <body>
@@ -17,6 +16,7 @@
       <a href="/src/pages/courses.html">Курсове</a>
       <a href="/src/pages/teachers.html">Преподаватели</a>
       <a href="/src/pages/students.html">Студенти</a>
+      <a href="/login.html">Вход/Изход</a>
     </nav>
     <div>
       <h1>Департаменти</h1>
@@ -37,12 +37,12 @@
           </div>
 
           <div class="form-element">
-            <label for="departmentAddress">Факултет: </label>
+            <label for="facultyId">Id на Факултет: </label>
             <input
-              id="departmentFaculty"
+              id="facultyId"
               type="text"
-              name="address"
-              placeholder="Адрес"
+              name="facultyId"
+              placeholder="Id на Факултет"
             />
           </div>
 
@@ -106,12 +106,12 @@
           </div>
 
           <div class="form-element">
-            <label for="departmentAddress">Факултет: </label>
+            <label for="facultyId">Id на Факултет: </label>
             <input
               id="faculty"
               type="text"
-              name="faculty"
-              placeholder="Факултет"
+              name="facultyId"
+              placeholder="Id на Факултет"
             />
           </div>
 
@@ -152,7 +152,7 @@
           <tr>
             <th className="tableHeader">ID</th>
             <th className="tableHeader">Департамент</th>
-            <th className="tableHeader">Факултет</th>
+            <th className="tableHeader">Id Факултет</th>
             <th className="tableHeader">Телефон</th>
             <th className="tableHeader">Email</th>
             <th className="tableHeader"></th>

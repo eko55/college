@@ -35,20 +35,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/**").authenticated())
                 .csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider())
                 .httpBasic(Customizer.withDefaults());
         return httpSecurity.build();
-//        http
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(req -> req
-//                        .anyRequest()
-//                        .permitAll()
-//                );
-//
-//        return http.build();
     }
 
     @Bean
@@ -65,6 +58,9 @@ public class SecurityConfig {
                     return admin;
                 }
                 AppUser appUser = userRepository.findByUsername(username);
+                if (appUser == null) {
+                    return null;
+                }
                 return new User(appUser.getUsername(), appUser.getPassword(), new ArrayList<>());
             }
         };

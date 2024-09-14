@@ -1,35 +1,36 @@
 package com.example.college.controller;
 
-//import com.example.college.model.dto.AuthRequest;
-//import io.swagger.v3.oas.annotations.tags.Tag;
-//import lombok.AllArgsConstructor;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.AuthenticationException;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.server.ResponseStatusException;
+import com.example.college.model.dto.LoginRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-//@Tag(name = "Auth")
-//@RestController
-//@AllArgsConstructor
-//@RequestMapping("api/v1/auth")
+@Tag(name = "Auth")
+@RestController
+@RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthenticationController {
 
-//    private AuthenticationManager authenticationManager;
-//
-//    @PostMapping()
-//    public ResponseEntity<Authentication> authenticate(@RequestBody AuthRequest request) {
-//        try {
-//            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(request.username(), request.password());
-//            return ResponseEntity.ok(authenticationManager.authenticate(usernamePasswordAuthenticationToken));
-//        } catch (AuthenticationException e) {
-//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Incorrect username or password!");
-//        }
-//    }
+    private UserDetailsService userDetailsService;
+
+    public AuthenticationController(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Operation(summary = "Authenticate an user")
+    @PostMapping("/login")
+    public ResponseEntity<UserDetails> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
+        if (userDetails != null && new BCryptPasswordEncoder().matches(loginRequest.getPassword(),userDetails.getPassword())) {
+            return ResponseEntity.ok(userDetails);
+        }else {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password");
+        }
+    }
 }

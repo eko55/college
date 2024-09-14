@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <script src="/src/scripts/register.js"></script>
+    <link rel="stylesheet" href="/src/styles/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Регистрация</h1>
+
+      <form id="registerForm">
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          required
+        /><br /><br />
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          required
+        /><br /><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        /><br /><br />
+        <button type="submit">Register</button>
+
+        <button>
+          <a href="/login.html">Вход</a>
+        </button>
+      </form>
+      <p id="error-message" class="error-message"></p>
+      <p id="success-message" class="success-message"></p>
+    </div>
+  </body>
+</html>

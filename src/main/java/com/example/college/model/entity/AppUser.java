@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
 @NoArgsConstructor
@@ -21,11 +22,14 @@ public class AppUser {
 
     private String password;
 
+    private String email;
+
     private Role role;
 
     public AppUser(UserCreationRequest userCreationRequest) {
         this.username = userCreationRequest.username();
-        this.password = userCreationRequest.password();
+        this.password = new BCryptPasswordEncoder().encode(userCreationRequest.password());
+        this.email = userCreationRequest.email();
         this.role = userCreationRequest.role();
     }
 
